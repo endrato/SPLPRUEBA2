@@ -1,0 +1,67 @@
+/* For plain text files, must be shown moved to avoid sidebar hides annotable content */
+body > pre {
+  margin-left: 161px;
+}
+
+.reply_user {
+  font-size: 70%;
+  font-style: oblique;
+}
+
+.reply_text {
+  font-size: 70%;
+}
+
+.reply_date {
+  font-size: 70%;
+  margin: 15px;
+}
+
+.highlightedAnnotation .highlightedAnnotation{ // TODO
+  background-color: transparent !important;
+}
+/* PVSCL:IFCOND(Autocomplete, LINE) */
+
+.swal2-actions {
+  z-index: 0 !important;
+}
+
+#comment {
+  width: 100%;
+}
+
+.awesomplete {
+  width: 100%;
+}
+/* PVSCL:ENDCOND */
+
+// POLE SELECTION IN COMMENT BOX
+.criterionName{
+  margin-bottom:5%;
+}
+.poleRadio{
+  display:none;
+}
+.poleRadio:checked + .poleImage{
+  opacity:1;
+  border-radius:15px 15px 15px 15px;
+  border: solid 2px #a4caf4;
+}
+.poleRadio + .poleImage{
+  opacity:0.4;
+  vertical-align:middle;
+}
+.poleRadio + .poleImage:hover{
+  opacity:1;
+}
+/* PVSCL:IFCOND(Autocomplete, LINE) */
+.awesomplete {
+  width: 100%;
+}
+/* PVSCL:ENDCOND */
+
+/* PVSCL:IFCOND(Commenting, LINE) */
+.swal2-bottom > div {
+  margin-bottom: 75px;
+}
+/* PVSCL:ENDCOND */

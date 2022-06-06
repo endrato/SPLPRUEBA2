@@ -1,0 +1,19 @@
+@startuml 
+ scale max 1080 width
+left to right direction 
+[<b>NoCodebook.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleGraderAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>MoodleScraping.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleViewPluginAssignSubmissionAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>MoodleScraping.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>MoodleGradingAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>MoodleGraderAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>MoodleViewPluginAssignSubmissionAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleProvider.js</b>\n Uses Feature:Hypothesis\n Uses Feature:BrowserStorage\n Uses Feature:Hierarchy\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>EmptyCodebook.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleGradingAugmentation.js</b>\n\n variant:ConceptAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>MoodleScraping.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>GSheetProvider.js</b>\n Uses Feature:Hypothesis\n Uses Feature:BrowserStorage\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>GSheetParser.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>GSheetProvider.js</b>\n Uses Feature:Hypothesis\n Uses Feature:BrowserStorage\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]-->[<b>GroupInitializer.js</b>\n Uses Feature:Manual\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>GSheetParser.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>BuiltIn.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>GroupInitializer.js</b>\n Uses Feature:Manual\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:OATS\n variant:ReviewAndGo]
+[<b>MoodleScraping.js</b>\n\n variant:ConceptAndGo\n variant:HighlightAndGo\n variant:MarkAndGo\n variant:ReviewAndGo]
+@enduml

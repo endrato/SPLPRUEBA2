@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" type="text/css" href="../styles/options.css">
+
+  <title>Configuration</title>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <header></header>
+
+  <!-- Navigation bar -->
+
+  <!-- Container -->
+  <div id="main-container" class="container">
+
+    <div class="jumbotron">
+      <img class="logo" src="../images/PVSCL:EVAL(WebAnnotator.WebAnnotationClient->pv:Attribute('appShortName'))/icon-38.png">
+      <h2 class="title">PVSCL:EVAL(WebAnnotator.WebAnnotationClient->pv:Attribute('appName')) configuration</h2>
+      <div class="card">
+        <div class="card-header bg-dark text-white">User manual</div>
+        <div class="card-body">
+          <div class="form-group">
+            Visit whenever you want the <a href="PVSCL:EVAL(WebAnnotator.WebAnnotationClient->pv:Attribute('userManualUrl'))" target="_blank">user manual</a> for further information.
+          </div>
+        </div>
+      </div>
+      // PVSCL:IFCOND(MoodleProvider,LINE)
+      <div class="card" aria-hidden="true">
+        <div class="card-header bg-dark text-white">Feedback</div>
+        <div class="card-body">
+          <div class="form-check">
+            <input disabled="disabled" type="checkbox" class="form-check-input" id="feedbackURLAndContext" checked="checked">
+            <label for="feedbackURLAndContext" class="form-check-label">Send feedback with url and context</label> <img src="./../images/warning.png" width="32" title="This option is not working yet">
+          </div>
+        </div>
+      </div>
+      // PVSCL:ENDCOND
+      // PVSCL:IFCOND(MoodleProvider,LINE)
+      <div class="card">
+        <div class="card-header bg-dark text-white">Moodle</div>
+        <div class="card-body">
+          <div class="form-group" aria-hidden="true">
+            <label for="moodleEndpoint">Moodle custom API endpoint</label><img src="./../images/warning.png" width="32" title="This option is not working yet">
+            <input disabled="disabled" type="url" class="form-control" id="moodleEndpoint" placeholder="Enter custom moodle API endpoint">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="apiSimulationCheckbox">
+            <label for="apiSimulationCheckbox" class="form-check-label">Use scraping instead of moodle API</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="autoOpenCheckbox">
+            <label for="autoOpenCheckbox" class="form-check-label">Automatically open downloaded files from students assignments in the LMS</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="moodleUpdateNotificationCheckbox" checked="checked">
+            <label for="moodleUpdateNotificationCheckbox" class="form-check-label">Display "moodle is updated notification" while grading students assignments</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="moodleUploadAnnotatedFilesCheckbox">
+            <label for="moodleUploadAnnotatedFilesCheckbox" class="form-check-label">Automatically upload annotated files to moodle as feedback files. You need to enable <a href="https://github.com/onekin/WacLine/wiki/User-manual-for-Mark&Go-Teachers-guide#automatic-annotated-file-submission-to-moodle-feedback">feedback files</a> in assignment.</label>
+            <img src="./../images/warning.png" width="32" title="This option is in alpha state, only work with plain-text-like files and can have some bugs or may work unexpectedly">
+          </div>
+        </div>
+      </div>
+      // PVSCL:ENDCOND
+      // PVSCL:IFCOND(AnnotationServer->pv:SelectedChildren('ps:annotationServer')->pv:Size()>1,LINE)
+       <div class="card">
+        <div class="card-header bg-dark text-white">Annotation server</div>
+        <div class="card-body">
+          <div class="form-check">
+            <label for="annotationServerDropdown">Select your annotations server</label>
+            <select class="form-control" id="annotationServerDropdown">
+              PVSCL:EVAL(AnnotationServer->pv:SelectedChildren('ps:annotationServer')->pv:Iterate(as;r=''|r+printOptionRow(as) + '\n'))
+            </select>
+          </div>
+        </div>
+      </div>
+      // PVSCL:ENDCOND
+      // PVSCL:IFCOND(BrowserStorage,LINE)
+      <div id="browserstorageConfigurationCard" class="card annotationServerConfiguration">
+        <div class="card-header bg-dark text-white">Browser storage</div>
+        <div class="card-body">
+          <div class="form-check">
+            <button id="viewAnnotationsButton">View annotations</button>
+            <button id="restoreDatabaseButton">Restore database</button>
+            <button id="backupDatabaseButton">Backup database</button>
+            <button id="deleteDatabaseButton">Delete database</button>
+          </div>
+        </div>
+      </div>
+      // PVSCL:ENDCOND
+      // PVSCL:IFCOND(Hypothesis, LINE)
+      <!-- Hypothesis login -->
+      <div id="hypothesisConfigurationCard" class="card annotationServerConfiguration">
+        <div class="card-header bg-dark text-white">Hypothesis</div>
+        <div class="card-body">
+          <div id="hypothesisLoginContainer" class="configurationSectionContainer">
+            <button class="btn btn-secondary" id="hypothesisLogin">Log in</button>
+          </div>
+          <div id="hypothesisLoggedInContainer" class="configurationSectionContainer">
+            Logged in as <span id="hypothesisLoggedInUsername" class="clickableInfoSpan">Unknown user</span>
+            <button class="btn btn-secondary" id="hypothesisLogout">Log out</button>
+          </div>
+        </div>
+      </div>
+      // PVSCL:ENDCOND
+      // PVSCL:IFCOND(Neo4J, LINE)
+      <div id="neo4jConfigurationCard" class="card annotationServerConfiguration">
+        <a id="neo4jConfiguration"></a>
+        <div class="card-header bg-dark text-white">Neo4J configuration</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="neo4jEndpoint" class="requiredFormInput">Endpoint URL</label>
+            <input type="url" class="form-control" id="neo4jEndpoint" placeholder="Enter your neo4j endpoint">
+          </div>
+          <div class="form-group">
+            <label for="neo4jToken" class="requiredFormInput">Token</label>
+            <input type="text" class="form-control" id="neo4jToken" placeholder="Enter your neo4j token">
+          </div>
+          <div class="form-group">
+            <label for="neo4jUser">User</label>
+            <input type="text" class="form-control" id="neo4jUser" placeholder="Enter your username or orcid">
+          </div>
+        </div>
+      </div>
+      // PVSCL:ENDCOND
+    </div>
+  </div>
+</div>
+<script src="../scripts/options.js"></script>
+</body>
+</html>
